@@ -1,0 +1,21 @@
+$newdisk = @(get-disk | Where-Object partitionstyle -eq 'raw')
+$Labels = @('Data','SQL_Data','SQL_Logs','SQL_Temp','SQL_System')
+
+for($i = 1; $i -lt $newdisk.Count ; $i++)
+{
+
+    $disknum = $newdisk[$i].Number
+    $dl = get-Disk $disknum | 
+       Initialize-Disk -PartitionStyle GPT -PassThru | 
+       if $newdisk[$i] = 2
+
+          New-Partition -AssignDriveLetter -UseMaximumSize
+    Format-Volume -driveletter $dl.Driveletter -FileSystem NTFS -NewFileSystemLabel $Labels[$i] -Confirm:$false
+
+}
+
+Get-Partition -DiskNumber 1 | Set-Partition -NewDriveLetter z
+Get-Partition -DiskNumber 2 | Set-Partition -NewDriveLetter d
+Get-Partition -DiskNumber 3 | Set-Partition -NewDriveLetter n
+Get-Partition -DiskNumber 4 | Set-Partition -NewDriveLetter r
+Get-Partition -DiskNumber 4 | Set-Partition -NewDriveLetter t
