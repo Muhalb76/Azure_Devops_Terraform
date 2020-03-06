@@ -1,3 +1,5 @@
+New-Item -Path 'D:\temp\Test Folder' -ItemType Directory
+
 $i= 0
 $newdisk = @(get-disk | Where-Object partitionstyle -eq 'raw')
 $Labels = @('Data','SQL_Data','SQL_Logs','SQL_Temp','SQL_System')
