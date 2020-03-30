@@ -16,10 +16,10 @@ $i++
 
 
 $sql_data_Drive = Get-Volume -FileSystemLabel "SQL_Data"
-Get-Partition -DriveLetter ($sql_data_Drive.DriveLetter) | Set-Partition -NewDriveLetter S
+Get-Partition -DriveLetter ($sql_data_Drive.DriveLetter) | Set-Partition -NewDriveLetter N
 
 $sql_logs_Drive = Get-Volume -FileSystemLabel "SQL_Logs"
-Get-Partition -DriveLetter ($sql_sql_Drive.DriveLetter) | Set-Partition -NewDriveLetter N
+Get-Partition -DriveLetter ($sql_sql_Drive.DriveLetter) | Set-Partition -NewDriveLetter P
 
 $sql_tmp_Drive = Get-Volume -FileSystemLabel "SQL_Temp"
 Get-Partition -DriveLetter ($sql_tmp_Drive.DriveLetter) | Set-Partition -NewDriveLetter R
