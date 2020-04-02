@@ -1,6 +1,6 @@
 
 New-Item -Path 'D:\Winlogbeat' -ItemType Directory
-
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $client = New-Object system.net.WebClient
 $client.DownloadFile("https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.6.1-windows-x86_64.zip","d:\Winlogbeat\winlogbeat.zip")                           
 
